@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Follower;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -31,22 +32,42 @@ class HomeController extends Controller
     }
 
     public function show(){
-      $posts = Post::all();
+      $posts = Post::orderBy('created_at', 'desc')->get();
       return view('tweet')->with('posts', $posts);
     }
 
-    public function show_user(){
-      $user = User::find(Auth::id());
+    public function show_user($id){
+      $user = User::find($id);
       $posts = $user->posts;
-      return view('tweet')->with('posts', $posts);
+      return view('user')->with('posts', $posts);
     }
 
     public function store(Request $request){
       $post = new Post();
-      $user= Auth::id();
+      $user_id = Auth::id();
       $post->body = $request->body;
-      $post->user_id = $user;
+      $post->user_id = $user_id;
       $post->save();
+      return redirect('/home');
+    }
+
+    public function follow($id){
+      $follower = new Follower();
+      $follower->follow_id = $id;
+      $follower->user_id = Auth::id();
+      $follower->save();
       return redirect('/tweet');
     }
+
+    public function show_follow(){
+      $follows = Follower::where('user_id', Auth::id())->get();
+      for($i=0; $i<count($follows); $i++){
+          $follows_id[$i] = $follows[$i]->follow_id;
+      }
+      $posts = Post::where('user_id',3,4)->get();
+      dd($posts);
+
+    }
+
+
 }

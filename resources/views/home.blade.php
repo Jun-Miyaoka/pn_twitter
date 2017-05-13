@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+              <div class="home_menu">
               <form method="post" action="{{ url('/posts') }}">
               <p>
                 <textarea rows="3" cols="40" name="body" placeholder="Whats happening?"></textarea>
@@ -13,15 +14,25 @@
                 <input type="submit" value="Tweet">
               </p>
             </form>
-            <li>{{ Auth::user()->name }}</li>
-              <h1>Users</h1>
-              <ul>
+            <ul type="square">
+              <h1> Users </h1>
                 @foreach ($users as $user)
-                <li><a href="">{{ $user->name }}</a></li>
+                  <a href="{{ url('/user', $user->id) }}">{{ $user->name }}<br></a>
                 @endforeach
+              <h1> Follow </h1>
+              @foreach ($users as $user)
+              <form method="post" action="{{ url('/follow', $user->id) }}">
+                <input type=submit value="Follow">
+                {{ $user->name }}
+              </form>
+              @endforeach
+              <h1>Tweet</h1>
+              <a href="{{ url('/follow/tweet') }}">Follow users<br></a>
+              <a href="{{ url('/tweet') }}">All users</a>
               </ul>
+            </div>
+              </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
