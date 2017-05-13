@@ -60,14 +60,8 @@ class HomeController extends Controller
     }
 
     public function show_follow(){
-      $follows = Follower::where('user_id', Auth::id())->get();
-      for($i=0; $i<count($follows); $i++){
-          $follows_id[$i] = $follows[$i]->follow_id;
+      $posts = Follower::select()->join('posts','posts.user_id','=','followers.follow_id')->get();
+      return view('followtweet')->with('posts', $posts);
       }
-      $posts = Post::where('user_id',3,4)->get();
-      dd($posts);
-
-    }
-
 
 }

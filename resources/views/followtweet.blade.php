@@ -5,16 +5,21 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+              <div class="home_menu">
               <h1>Tweets</h1>
               <ul>
                 @foreach ($posts as $post)
                 <li>
-                  {{ $post->collecton->user_id}}</br>
-                  {{ $post->collecton->body }}</br>
-                  {{ $post->collecton->created_at }}
+                  {{ $post->user_id }}</br>
+                  {{ $post->body }}</br>
+                  {{ $post->created_at }}
                 </li>
                 @endforeach
               </ul>
+              <div class="back_to_home">
+              <a href="{{ url('/home') }}">Back<br></a>
+            </div>
+            </div>
             </div>
         </div>
     </div>

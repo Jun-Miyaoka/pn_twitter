@@ -5,6 +5,10 @@
  */
 
 /*追加クラス*/
+.tweet_table{
+  width: 250px;
+}
+
 .back_to_home{
   position: absolute;
   left: 350px;
