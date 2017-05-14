@@ -5,12 +5,18 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-              <table class="tweet_table" border=1>
+              <div class="home_menu">
               @foreach ($posts as $post)
-              <tr><td>{{ $post->user_id }}</td><td>{{ $post->body }}</td><td>{{ $post->created_at }}</td></tr>
+              <li>
+              {{ $post->user_id }}<br>
+              {{ $post->body }}<br>
+              {{ $post->created_at }}
+              </li>
               @endforeach
-            </table>
+          </div>
               </div>
+              <div class="back_to_home">
+              <a href="{{ url('/home') }}">Back<br></a>
             </div>
         </div>
     </div>

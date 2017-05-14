@@ -60,6 +60,7 @@ class HomeController extends Controller
     }
 
     public function show_follow(){
+      $user_id = Auth::id();
       $posts = Follower::select()->join('posts','posts.user_id','=','followers.follow_id')->get();
       return view('followtweet')->with('posts', $posts);
       }
