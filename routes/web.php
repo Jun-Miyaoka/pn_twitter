@@ -18,8 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/tweet', 'HomeController@show');
 Route::post('/posts', 'HomeController@store');
 Route::post('/follow/{id}', 'HomeController@follow');
-Route::get('/user/{id}', 'HomeController@show_user');
-Route::get('/follow/tweet', 'HomeController@show_follow');
+Route::get('/tweet', 'TweetController@tweet');
+Route::get('/user/tweet/{id}', 'TweetController@user_tweet');
+Route::get('/follow/tweet/{id}', 'TweetController@follower_tweet');

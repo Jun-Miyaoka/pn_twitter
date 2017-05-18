@@ -10,7 +10,4 @@ class Post extends Model
       return $this->belongsTo('App\User');
     }
 
-    public function follower(){
-      return $this->belongsTo('App\Follower','user_id','follow_id');
-    }
 }

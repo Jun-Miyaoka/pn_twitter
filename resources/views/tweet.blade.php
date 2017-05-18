@@ -7,15 +7,20 @@
             <div class="panel panel-default">
               <div class="home_menu">
               <h1>Tweets</h1>
-              <ul>
-                @foreach ($posts as $post)
-                <li>
-                  {{ $post->user_id}}</br>
-                  {{ $post->body }}</br>
-                  {{ $post->created_at }}
-                </li>
+              <table>
+                <col width="70">
+                <col width="500">
+                <col width="100">
+                @foreach ($users as $user)
+                @foreach ($user->posts()->orderBy('created_at','desc')->get() as $post)
+                <tr>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $post->body }}</td>
+                  <td>{{ $post->created_at }}</td>
+                </tr>
                 @endforeach
-              </ul>
+                @endforeach
+                </table>
               <div class="back_to_home">
               <a href="{{ url('/home') }}">Back<br></a>
             </div>

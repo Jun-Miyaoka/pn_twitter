@@ -17,7 +17,7 @@
             <ul type="square">
               <h1> Users </h1>
                 @foreach ($users as $user)
-                  <a href="{{ url('/user', $user->id) }}">{{ $user->name }}<br></a>
+                  <a href="{{ url('/user/tweet', $user->id) }}">{{ $user->name }}<br></a>
                 @endforeach
               <h1> Follow </h1>
               @foreach ($users as $user)
@@ -27,7 +27,7 @@
               </form>
               @endforeach
               <h1>Tweet</h1>
-              <a href="{{ url('/follow/tweet') }}">Follow users<br></a>
+              <a href="{{ url('/follow/tweet', Auth::id()) }}">Follow users<br></a>
               <a href="{{ url('/tweet') }}">All users</a>
               </ul>
             </div>

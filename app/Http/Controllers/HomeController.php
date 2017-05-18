@@ -31,15 +31,9 @@ class HomeController extends Controller
         return view('home')->with('users', $users);
     }
 
-    public function show(){
-      $posts = Post::orderBy('created_at', 'desc')->get();
-      return view('tweet')->with('posts', $posts);
-    }
-
     public function show_user($id){
       $user = User::find($id);
-      $posts = $user->posts;
-      return view('user')->with('posts', $posts);
+      return view('user')->with('user', $user);
     }
 
     public function store(Request $request){
@@ -56,13 +50,7 @@ class HomeController extends Controller
       $follower->follow_id = $id;
       $follower->user_id = Auth::id();
       $follower->save();
-      return redirect('/tweet');
+      return redirect('/home');
     }
-
-    public function show_follow(){
-      $user_id = Auth::id();
-      $posts = Follower::select()->join('posts','posts.user_id','=','followers.follow_id')->get();
-      return view('followtweet')->with('posts', $posts);
-      }
 
 }

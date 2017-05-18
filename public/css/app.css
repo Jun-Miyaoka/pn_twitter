@@ -5,6 +5,15 @@
  */
 
 /*追加クラス*/
+
+table {
+	border-collapse: collapse;
+}
+td {
+	border: solid 1px;
+	padding: 0.5em;
+}
+
 .tweet_table{
   width: 250px;
 }
