@@ -8,27 +8,6 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-$table_border: solid 1px;
-$table_padding: 0.5em;
-
-table {
-	border-collapse: collapse;
-}
-td {
-	border: $table_border;
-	padding: $table_padding;
-}
-
-.tweet_table{
-  width: 250px;
-}
-
-.back_to_home{
-  position: absolute;
-  left: 350px;
-  font-size: 20px;
-}
-
-.home_menu{
-  font-family: Verdana, sans-serif;
+body{
+	background-color: yellow;
 }

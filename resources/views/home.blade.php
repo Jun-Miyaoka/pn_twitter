@@ -9,6 +9,9 @@
               <form method="post" action="{{ url('/posts') }}">
               <p>
                 <textarea rows="3" cols="40" name="body" placeholder="Whats happening?"></textarea>
+                @if ($errors->has('body'))
+                <span class="error">{{ $errors->first('body') }}</span>
+                @endif
               </p>
               <p>
                 <input type="submit" value="Tweet">

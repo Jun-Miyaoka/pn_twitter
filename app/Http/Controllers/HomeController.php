@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\User;
 use App\Post;
 use App\Follower;
@@ -37,6 +38,9 @@ class HomeController extends Controller
     }
 
     public function store(Request $request){
+      $this->validate($request, [
+        'body' => 'require|max:140',
+      ]);
       $post = new Post();
       $user_id = Auth::id();
       $post->body = $request->body;
