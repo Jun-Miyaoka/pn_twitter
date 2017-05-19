@@ -1,10 +1,16 @@
-php artisan serve --host 192.168.33.10 --port 8000
-のあとに
-http://192.168.33.10:8000 
-でLaravelのホーム画面へ
+20170519
+・コントローラーを2つに分割
+HomeContoroller
+TweetController
 
-ログイン画面
-http://192.168.33.10:8000/login
+・URLを修正
 
-ホーム画面
-http://192.168.33.10:8000/home
+・ツイート表示形式を変更。
+<table>
+  <tr>
+    <td>{{ $user->name }}</td>
+    <td>{{ $post->body }}</td>
+    <td>{{ $post->created_at }}</td>
+  </tr>
+</table>
+
