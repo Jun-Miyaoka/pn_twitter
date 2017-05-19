@@ -27,8 +27,8 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $users = User::all();
-        return view('home')->with('users', $users);
+      $users = User::all();
+      return view('home')->with('users', $users);
     }
 
     public function show_user($id){
@@ -46,11 +46,17 @@ class HomeController extends Controller
     }
 
     public function follow($id){
-      $follower = new Follower();
-      $follower->follow_id = $id;
-      $follower->user_id = Auth::id();
-      $follower->save();
-      return redirect('/home');
+      $follow_id = Follower::where('user_id', Auth::id())->pluck('follow_id')->toArray();
+      if(in_array($id, $follow_id)) {
+        dd('You already follow');
+      }else{
+        /*
+        $follower = new Follower();
+        $follower->follow_id = $id;
+        $follower->user_id = Auth::id();
+        $follower->save();
+        */
+        return redirect('/home')->with('flash_message', 'Follow!');
+      }
     }
-
 }

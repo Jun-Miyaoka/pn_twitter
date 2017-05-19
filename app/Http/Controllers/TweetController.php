@@ -22,12 +22,19 @@ class TweetController extends Controller
 
   public function user_tweet($id){
     $user = User::find($id);
-    return view('usertweet')->with('user', $user);
+    $user_id = $user->id;
+    return view('usertweet')->with('user', $user)->with('user_id', $user_id);
   }
 
   public function follower_tweet($id){
     $followers = Follower::where('user_id',$id)->get();
     return view('followtweet')->with('followers', $followers);
+    }
+
+    public function destroy($id){
+      $post = Post::find($id);
+      $post->delete();
+      return redirect('/home');
     }
 
 

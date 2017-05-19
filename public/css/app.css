@@ -28,6 +28,17 @@ td {
   font-family: Verdana, sans-serif;
 }
 
+.flash_message {
+  text-align: center;
+  padding: 5px;
+  color: green;
+  background: Lavender;
+}
+
+.hidden {
+  display: none;
+}
+/*追加クラス*/
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}

@@ -16,6 +16,12 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $post->body }}</td>
                     <td>{{ $post->created_at }}</td>
+                    <td>
+                    @if ($user_id == Auth::id())
+                    <form method="post" action="{{ url('/destroy', $post->id) }}">
+                      <input type=submit value="delete">
+                    @endif
+                    </td>
                   </tr>
                   @endforeach
                 </table>
