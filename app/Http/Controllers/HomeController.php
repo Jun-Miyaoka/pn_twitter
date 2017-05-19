@@ -48,14 +48,12 @@ class HomeController extends Controller
     public function follow($id){
       $follow_id = Follower::where('user_id', Auth::id())->pluck('follow_id')->toArray();
       if(in_array($id, $follow_id)) {
-        dd('You already follow');
+        return redirect('/home')->with('flash_message', 'You already follow!');
       }else{
-        /*
         $follower = new Follower();
         $follower->follow_id = $id;
         $follower->user_id = Auth::id();
         $follower->save();
-        */
         return redirect('/home')->with('flash_message', 'Follow!');
       }
     }

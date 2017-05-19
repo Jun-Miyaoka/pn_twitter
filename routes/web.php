@@ -23,4 +23,4 @@ Route::post('/follow/{id}', 'HomeController@follow');
 Route::get('/tweet', 'TweetController@tweet');
 Route::get('/user/tweet/{id}', 'TweetController@user_tweet');
 Route::get('/follow/tweet/{id}', 'TweetController@follower_tweet');
-Route::post('/destroy/{id}', 'TweetController@destroy');
+Route::post('/user/tweet/{id}', 'TweetController@destroy');

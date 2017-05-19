@@ -16,14 +16,13 @@ class TweetController extends Controller
   }
 
   public function tweet(){
-    $users = User::all();
-    return view('tweet')->with('users', $users);
+    $posts = Post::orderBy('created_at', 'desc')->get();
+    return view('tweet')->with('posts', $posts);
   }
 
   public function user_tweet($id){
-    $user = User::find($id);
-    $user_id = $user->id;
-    return view('usertweet')->with('user', $user)->with('user_id', $user_id);
+    $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->get();
+    return view('usertweet')->with('posts', $posts);
   }
 
   public function follower_tweet($id){
@@ -34,7 +33,7 @@ class TweetController extends Controller
     public function destroy($id){
       $post = Post::find($id);
       $post->delete();
-      return redirect('/home');
+      return redirect('/home')->with('flash_message', 'Tweet Deleted!');
     }
 
 

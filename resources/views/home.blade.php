@@ -15,29 +15,28 @@
               </p>
             </form>
 
-            <ul type="square">
-              <h1> Users </h1>
-                @foreach ($users as $user)
-                  <a href="{{ url('/user/tweet', $user->id) }}">{{ $user->name }}<br></a>
-                @endforeach
-              <h1> Follow </h1>
-              @if (session('flash_message'))
-              <div class="flash_message" onclick="this.classList.add('hidden')">{{ session('flash_message') }}</div>
-              @endif
-              <table>
+            <ul type="square" align="center">
+              <h1 > User </h1>
+              <table height="200" align="center">
                 <col width="100">
-                <col width="50">
+                <col width="100">
                 @foreach ($users as $user)
                 <tr>
-                <td>{{ $user->name }}</td>
-                <td>
+                <td align="center"><a href="{{ url('/user/tweet', $user->id) }}">{{ $user->name }}</a></td>
+                <td align="center">
+                  @if($user->id == Auth::id())
+                  @else
                     <form method="post" action="{{ url('/follow', $user->id) }}">
                     <input type=submit value="Follow">
                     </form>
+                  @endif
                 </td>
               </tr>
               @endforeach
               </table>
+              @if (session('flash_message'))
+              <div class="flash_message" onclick="this.classList.add('hidden')">{{ session('flash_message') }}</div>
+              @endif
               <h1>Tweet</h1>
               <a href="{{ url('/follow/tweet', Auth::id()) }}">Follow users<br></a>
               <a href="{{ url('/tweet') }}">All users</a>
