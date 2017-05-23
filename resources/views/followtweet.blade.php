@@ -11,16 +11,14 @@
                 <col width="70">
                 <col width="500">
                 <col width="100">
-                @foreach ($followers as $follower)
-                  @foreach ($follower->user()->get() as $user)
-                   @foreach ($user->posts()->get() as $post)
-                   <tr>
-                     <td>{{ $user->name }}</td>
-                     <td>{{ $post->body }}</td>
-                     <td>{{ $post->created_at }}</td>
-                   </tr>
-                    @endforeach
-                  @endforeach
+                @foreach ($posts as $post)
+                @foreach ($post->user()->get() as $user)
+                <tr>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $post->body }}</td>
+                  <td>{{ $post->created_at }}</td>
+                </tr>
+                @endforeach
                 @endforeach
               </table>
               <div class="back_to_home">

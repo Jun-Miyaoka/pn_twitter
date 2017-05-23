@@ -26,8 +26,9 @@ class TweetController extends Controller
   }
 
   public function follower_tweet($id){
-    $followers = Follower::where('user_id',$id)->get();
-    return view('followtweet')->with('followers', $followers);
+    $followers = Follower::where('user_id',$id)->pluck('follow_id')->toArray();
+    $posts = Post::whereIn('user_id', $followers)->orderBy('created_at', 'desc')->get();
+    return view('followtweet')->with('posts', $posts);
     }
 
     public function destroy($id){

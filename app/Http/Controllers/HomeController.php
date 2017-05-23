@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function store(Request $request){
       $this->validate($request, [
-        'body' => 'require|max:140',
+        'body' => 'required|max:140',
       ]);
       $post = new Post();
       $user_id = Auth::id();
