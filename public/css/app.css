@@ -60,6 +60,10 @@ div.timeline_box{
 	border:1px solid #aaaaaa;
 	background-color: #ffffff;
 }
+div.no_post{
+	text-align: center;
+	font-size: 20px;
+}
 table.tweet_table {
 	border: 1px #808080 solid;
 	text-align: left;

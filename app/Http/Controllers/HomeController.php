@@ -30,12 +30,13 @@ class HomeController extends Controller
     $followers = Follower::where('user_id', Auth::id())->pluck('follow_id')->toArray();
     $posts = Post::whereIn('user_id', $followers)->orderBy('created_at', 'desc')->get();
     $users = User::all();
-    return view('home')->with('posts', $posts)->with('users', $users);
-  }
-
-  public function show_user($id){
-    $user = User::find($id);
-    return view('user')->with('user', $user);
+    $posts_count = Post::where('user_id', Auth::id())->count();
+    $followers_count = Follower::where('user_id', Auth::id())->count();
+    return view('home')
+    ->with('posts', $posts)
+    ->with('users', $users)
+    ->with('posts_count', $posts_count)
+    ->with('followers_count', $followers_count);
   }
 
   public function store(Request $request){

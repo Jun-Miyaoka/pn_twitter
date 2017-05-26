@@ -19,12 +19,13 @@
     @endforeach
     <!--コメント一覧-->
     @foreach ($comments as $comment)
+    @foreach ($comment->user()->get() as $user)
     <table class="comment_table">
       <col width="100">
       <col width="250">
       <col width="50">
       <tr>
-        <td style="font-size:18px"> name </td>
+        <td style="font-size:18px"> {{ $user->name }}</td>
         <td>{{ $comment->created_at }}</td>
         <td>
           <form method="post" action="{{ action('CommentController@destroy', $comment->id) }}" method="post">
@@ -35,6 +36,7 @@
           <td colspan="3">{{ $comment->body }}</td>
         </tr>
       </table>
+      @endforeach
       @endforeach
       <br>
       <div class="comment_form">

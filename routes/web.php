@@ -17,13 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/posts', 'HomeController@store');
+Route::resource('home', 'HomeController');
 Route::post('/follow/{id}', 'HomeController@follow');
-Route::get('/tweet', 'TweetController@tweet');
-Route::get('/user/tweet/{id}', 'TweetController@user_tweet');
-Route::get('/follow/tweet/{id}', 'TweetController@follower_tweet');
-Route::post('/user/tweet/{id}', 'TweetController@destroy');
 Route::get('/comment/{id}', 'CommentController@comment');
 Route::post('/post/comment/{id}', 'CommentController@store');
 Route::post('/comment/{id}', 'CommentController@destroy');
+
+Route::get('/tweet/{id}', 'TweetController@show');
+Route::post('/tweet/{id}', 'TweetController@destroy');

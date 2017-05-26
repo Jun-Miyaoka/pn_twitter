@@ -14,8 +14,8 @@
         <td>Following</td>
       </tr>
       <tr>
-        <td>ツイート数</td>
-        <td>フォロー数</td>
+        <td>{{ $posts_count }}</td>
+        <td>{{ $followers_count }}</td>
       </tr>
     </table>
   </div>
@@ -26,7 +26,7 @@
       <col width="100">
       @foreach ($users as $user)
       <tr>
-        <td align="center"><a href="{{ url('/user/tweet', $user->id) }}">{{ $user->name }}</a></td>
+        <td align="center"><a href="{{ url('/tweet', $user->id) }}">{{ $user->name }}</a></td>
         <td align="center">
           @if($user->id == Auth::id())
           @else
@@ -39,14 +39,11 @@
       @endforeach
     </table>
   </div>
-  @if (session('flash_message'))
-  <div class="flash_message" onclick="this.classList.add('hidden')">{{ session('flash_message') }}</div>
-  @endif
 </div>
   <!-- 右カラム上(ツイート) -->
   <div class="tweet_menu">
     <div class="tweet_box">
-      <form method="post" action="{{ url('/posts') }}">
+      <form method="post" action="{{ action('HomeController@store') }}">
         <p>
           <textarea rows="3" cols="40" name="body" placeholder="Whats happening?"></textarea>
           <input type="submit" value="Tweet">
