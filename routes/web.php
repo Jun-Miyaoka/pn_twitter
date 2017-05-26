@@ -24,3 +24,6 @@ Route::get('/tweet', 'TweetController@tweet');
 Route::get('/user/tweet/{id}', 'TweetController@user_tweet');
 Route::get('/follow/tweet/{id}', 'TweetController@follower_tweet');
 Route::post('/user/tweet/{id}', 'TweetController@destroy');
+Route::get('/comment/{id}', 'CommentController@comment');
+Route::post('/post/comment/{id}', 'CommentController@store');
+Route::post('/comment/{id}', 'CommentController@destroy');

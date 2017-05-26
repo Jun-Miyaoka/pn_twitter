@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\Follower;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 
 class TweetController extends Controller
@@ -13,11 +14,6 @@ class TweetController extends Controller
   public function __construct()
   {
       $this->middleware('auth');
-  }
-
-  public function tweet(){
-    $posts = Post::orderBy('created_at', 'desc')->get();
-    return view('tweet')->with('posts', $posts);
   }
 
   public function user_tweet($id){
@@ -31,11 +27,9 @@ class TweetController extends Controller
     return view('followtweet')->with('posts', $posts);
     }
 
-    public function destroy($id){
-      $post = Post::find($id);
-      $post->delete();
-      return redirect('/home')->with('flash_message', 'Tweet Deleted!');
+  public function destroy($id){
+    $post = Post::find($id);
+    $post->delete();
+    return redirect('/home')->with('flash_message', 'Tweet Deleted!');
     }
-
-
 }

@@ -5,26 +5,81 @@
  */
 
 /*追加クラス*/
-
-table {
-	border-collapse: collapse;
+.home_contents{
+	font-family: Verdana, sans-serif;
+	width: 1000px;
+  margin:0 auto;
 }
-td {
-	border: solid 1px;
-	padding: 0.5em;
+.comment_contents{
+	font-family: Verdana, sans-serif;
+	width: 500px;
+  margin:0 auto;
 }
-
-.tweet_table{
-  width: 250px;
+.user_menu{
+	float: left;
+	width: 300px;
+}
+.tweet_menu{
+	float:left;
+	width: auto;
+}
+.home_auth_user{
+	font-size: 30px;
+}
+.home_auth_table{
+	text-align: left;
+	line-height: 1.5;
+}
+.home_users_table{
+	text-align: left;
+	margin-top: 30px;
+}
+div.auth_user_box{
+	width: 250px;
+	background-color: #ffffff;
+	padding: 15px;
+	border: solid thin;
+}
+div.user_info_box{
+	width: 250px;
+	background-color: #ffffff;
+	padding: 15px;
+	margin-top: 15px;
+	border: solid thin;
+}
+div.tweet_box{
+	width: 500px;
+	margin-left: 10px;
+	text-align: center;
+	border:1px solid #aaaaaa;
+	background-color: #F0F8FF;
+}
+div.timeline_box{
+	width: 500px;
+	margin-left: 10px;
+	border:1px solid #aaaaaa;
+	background-color: #ffffff;
+}
+table.tweet_table {
+	border: 1px #808080 solid;
+	text-align: left;
+  line-height: 1.5;
+		background-color: #ffffff;
+}
+table.comment_table {
+	margin-left: 40px;
+	border: 1px #808080 solid;
+	text-align: left;
+  line-height: 1.5;
+	background-color: #ffffff;
 }
 
 .back_to_home{
-  position: absolute;
-  left: 350px;
+	margin-left: 200px;
   font-size: 20px;
 }
 
-.home_menu{
+.font{
   font-family: Verdana, sans-serif;
 }
 
@@ -44,6 +99,14 @@ td {
 	color: tomato;
 	padding:3px, 0;
 	display: block;
+}
+.input_button{
+	font-size: 0.5em;
+	background-color: #fff;
+	border-style: none;
+}
+.comment_form{
+	text-align: center;
 }
 /*追加クラス*/
 
