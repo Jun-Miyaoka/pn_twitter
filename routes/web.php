@@ -19,9 +19,8 @@ Auth::routes();
 
 Route::resource('home', 'HomeController');
 Route::post('/follow/{id}', 'HomeController@follow');
+Route::get('/tweet/{id}', 'TweetController@show');
+Route::delete('/tweet/{id}', 'TweetController@destroy');
 Route::get('/comment/{id}', 'CommentController@comment');
 Route::post('/post/comment/{id}', 'CommentController@store');
-Route::post('/comment/{id}', 'CommentController@destroy');
-
-Route::get('/tweet/{id}', 'TweetController@show');
-Route::post('/tweet/{id}', 'TweetController@destroy');
+Route::delete('/comment/{id}', 'CommentController@destroy');

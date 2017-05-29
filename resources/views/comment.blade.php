@@ -28,26 +28,39 @@
         <td style="font-size:18px"> {{ $user->name }}</td>
         <td>{{ $comment->created_at }}</td>
         <td>
-          <form method="post" action="{{ action('CommentController@destroy', $comment->id) }}" method="post">
-            <input type=submit value="[×]" class="input_button">
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3">{{ $comment->body }}</td>
-        </tr>
-      </table>
-      @endforeach
-      @endforeach
-      <br>
-      <div class="comment_form">
+          <form method="post" action="{{ action('CommentController@destroy', $comment->id) }}" id="form_{{ $comment->id }}">
+            {{ method_field('delete') }}
+            <a href="#" data-id="{{ $comment->id }}" onclick="deletePost(this);">[×]</a>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">{{ $comment->body }}</td>
+      </tr>
+    </table>
+    @endforeach
+    @endforeach
+    <br>
+    <div class="comment_form">
       <form method="post" action="{{ action('CommentController@store', $post->id) }}">
-        <textarea rows="1" cols="20" name="body" placeholder="Comment"></textarea>
+        <textarea rows="2" cols="30" name="body" placeholder="Comment"></textarea>
         <input style="vertical-align:top;" type="submit" value="Add Comment">
       </form>
     </div>
-      <div class="back_to_home">
-        <a href="{{ url('/home') }}">Back<br></a>
-      </div>
+    <div class="back_to_home">
+      <a href="{{ url('/home') }}">Back<br></a>
     </div>
   </div>
-  @endsection
+</div>
+
+
+<script>
+function deletePost(e) {
+  'use strict';
+
+  if (confirm('are you sure?')) {
+    document.getElementById('form_' + e.dataset.id).submit();
+  }
+}
+</script>
+@endsection

@@ -5,41 +5,45 @@
   <!-- 左カラム上(ユーザ情報) -->
   <div class="user_menu">
     <div class="auth_user_box">
-    <div class="home_auth_user"> {{ Auth::user()->name}} </div>
-    <table class="home_auth_table">
-      <col width="120">
-      <col width="120">
-      <tr>
-        <td>Tweets</td>
-        <td>Following</td>
-      </tr>
-      <tr>
-        <td>{{ $posts_count }}</td>
-        <td>{{ $followers_count }}</td>
-      </tr>
-    </table>
-  </div>
+      <div class="home_auth_user"> {{ Auth::user()->name}} </div>
+      <table class="home_auth_table">
+        <col width="120">
+        <col width="120">
+        <tr>
+          <td>Tweets</td>
+          <td>Following</td>
+        </tr>
+        <tr>
+          <td>{{ $posts_count }}</td>
+          <td>{{ $followers_count }}</td>
+        </tr>
+      </table>
+    </div>
     <!-- 左カラム下(他のユーザ一覧) -->
+    <br>
+    @if (session('flash_message'))
+    <div class="flash_message" onclick="this.classList.add('hidden')">{{ session('flash_message') }}</div>
+    @endif
     <div class="user_info_box">
-    <table class="home_users_table">
-      <col width="100">
-      <col width="100">
-      @foreach ($users as $user)
-      <tr>
-        <td align="center"><a href="{{ url('/tweet', $user->id) }}">{{ $user->name }}</a></td>
-        <td align="center">
-          @if($user->id == Auth::id())
-          @else
-          <form method="post" action="{{ url('/follow', $user->id) }}">
-            <input type=submit value="Follow">
-          </form>
-          @endif
-        </td>
-      </tr>
-      @endforeach
-    </table>
+      <table class="home_users_table">
+        <col width="100">
+        <col width="100">
+        @foreach ($users as $user)
+        <tr>
+          <td align="center"><a href="{{ url('/tweet', $user->id) }}">{{ $user->name }}</a></td>
+          <td align="center">
+            @if($user->id == Auth::id())
+            @else
+            <form method="post" action="{{ url('/follow', $user->id) }}">
+              <input type=submit value="Follow">
+            </form>
+            @endif
+          </td>
+        </tr>
+        @endforeach
+      </table>
+    </div>
   </div>
-</div>
   <!-- 右カラム上(ツイート) -->
   <div class="tweet_menu">
     <div class="tweet_box">
